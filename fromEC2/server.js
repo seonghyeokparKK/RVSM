@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
             password: "*40211033841*ab",
             port: 3306
         });
-        conn.connect(); //db접속 
+        conn.connect(); //db접속위해
         */
 
     var data = randomNum(0, 10);
