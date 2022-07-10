@@ -7,11 +7,11 @@ var mysql = require('mysql');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.set('view engine', 'ejs'); // 렌더링 엔진 모드를 ejs로 설정
-app.set('views',  __dirname + '/views');    // ejs이 있는 폴더를 지정
+app.set('views', __dirname + '/views');    // ejs이 있는 폴더를 지정
 
 app.get('/', (req, res) => {
     res.render('index');    // index.ejs을 사용자에게 전달
@@ -25,13 +25,13 @@ app.get('/sign_up', (req, res) => {
     res.render('sign_up');    // index.ejs을 사용자에게 전달
 })
 
-app.post('/login', function(req,res){
+app.post('/login', function (req, res) {
     console.log("post request (from '/sign_up' to '/login') ");
     console.log("id :", req.body.id);
     console.log("password :", req.body.password);
 
     /*---받은 아이디와 password를 확인하는 절차를 거치고, 맞으면 res.render(index), 틀리면 틀렸다고 안내 ---*/
-    /*---DB 열고 확인하는 절차 거치면 될듯? */
+    /*---DB 열고 확인하는 절차 거치면 될듯? /
     res.render('index');
 });
 
@@ -67,26 +67,25 @@ io.on('connection', (socket) => {
         });
         conn.connect(); //db접속
         */
-        
-        var data = randomNum(0,10);
 
-        socket.emit('response_data', data);
-        console.log('[server]data received: ' + data);
+    var data = randomNum(0, 10);
 
+    socket.emit('response_data', data);
+    console.log('[server]data received: ' + data);
 
-
-    });
 
 
 });
 
-server.listen(3000, function() {
-  console.log('Listening on http://localhost:3000/');
+
 });
 
-function randomNum(min, max)
-{ 
-    var randNum = Math.floor(Math.random()*(max-min+1)) + min;
-    return randNum; 
+server.listen(3000, function () {
+    console.log('Listening on http://localhost:3000/');
+});
+
+function randomNum(min, max) {
+    var randNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randNum;
 }
 
