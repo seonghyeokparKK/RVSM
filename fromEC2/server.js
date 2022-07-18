@@ -22,6 +22,7 @@ app.get('/device', (req, res) => { //device connection part
 })
 
 app.get('/sign_up', (req, res) => {
+    console.log('sign_up by joonik');
     res.render('sign_up');    // index.ejs을 사용자에게 전달
 })
 
